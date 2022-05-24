@@ -1,0 +1,254 @@
+@use "./partials/fonts" as *;
+@use "./partials/mixins" as *;
+
+* {
+  font-family: "Indie Flower", cursive;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+li {
+  list-style-type: circle;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffeab8;
+    width: 100%;
+    padding: 5px 0;
+    @include tablet {
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    width: 80px;
+    @include desktop {
+      width: 120px;
+    }
+  }
+
+  &__title {
+    font-size: 30px;
+    padding-left: 10px;
+    margin: 20px;
+    @include tablet {
+      font-size: 36px;
+      padding-right: 20px;
+    }
+    @include desktop {
+      font-size: 50px;
+      padding-right: 40px;
+    }
+  }
+}
+
+.background {
+  background-image: url(../assets/images/FoodAndDrinkDesign.svg);
+  background-size: 50%;
+  background-repeat: repeat;
+  background-position: center;
+  margin: 0;
+  padding: 1.5rem 0;
+  @include tablet {
+    padding: 2.5rem 12.5rem;
+  }
+  @include desktop {
+    padding: 5rem 25rem;
+  }
+}
+
+.chef-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: white;
+  margin: 0 1.25rem;
+  // border: 0.3rem solid #fda5bf;
+  // border-radius: 0.5rem;
+
+  &__title {
+    font-size: 30px;
+    margin: 15px;
+    @include tablet {
+      font-size: 36px;
+    }
+    @include desktop {
+      font-size: 50px;
+    }
+  }
+
+  &__description {
+    width: 75%;
+    margin-top: 0;
+    font-size: 16px;
+    letter-spacing: 0.75px;
+    text-align: center;
+    @include tablet {
+      font-size: 18px;
+    }
+    @include desktop {
+      font-size: 22px;
+    }
+  }
+
+  &__image {
+    width: 150px;
+  }
+
+  &__button {
+    width: 75%;
+    margin: 1.5rem 0;
+    padding: 0.5rem;
+    background-color: #ffeab8;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 0.3125rem;
+    @include tablet {
+      font-size: 28px;
+    }
+  }
+}
+
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0 1.25rem;
+  padding: 1rem;
+
+  &__title {
+    font-size: 30px;
+    margin: 15px;
+    @include tablet {
+      font-size: 36px;
+    }
+    @include desktop {
+      font-size: 50px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 20px;
+    margin-top: 0;
+    @include tablet {
+      font-size: 18px;
+    }
+    @include desktop {
+      font-size: 22px;
+    }
+  }
+
+  &__video {
+    width: 70%;
+    margin-bottom: 1.5rem;
+    border: 0rem solid;
+    border-radius: 0.5rem;
+    height: 189px;
+    align-self: center;
+
+    @include desktop {
+      height: 20rem;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffeab8;
+    width: 100%;
+    @include tablet {
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    width: 60px;
+    @include desktop {
+      width: 100px;
+    }
+  }
+
+  &__title {
+    font-size: 30px;
+    margin: 20px;
+    @include tablet {
+      font-size: 36px;
+      padding-left: 20px;
+    }
+    @include desktop {
+      font-size: 50px;
+      padding-left: 40px;
+    }
+  }
+}
+
+// ANIMATION THINGS
+
+.recipe-generator {
+  position: relative;
+  perspective: 150rem;
+}
+
+.flip__container {
+  position: relative;
+  min-height: 35rem;
+  min-width: 40vw;
+  transform-style: preserve-3d;
+  transition: transform 3s ease;
+}
+
+.recipe-generator--active .flip__container {
+  transform: rotateY(180deg);
+}
+
+.chef-card,
+.recipe-card {
+  background-color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backface-visibility: hidden;
+  border: 0.3rem solid #bdeae4;
+  border-radius: 0.5rem;
+}
+
+.recipe-card {
+  transform: rotateY(180deg);
+  overflow: scroll;
+}
